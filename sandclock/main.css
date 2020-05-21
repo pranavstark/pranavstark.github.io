@@ -1,0 +1,140 @@
+body{
+    color:white;
+    font-family: 'Press Start 2P', cursive;
+    background:#050505;
+  }
+  
+  .banner{
+    padding:20px;
+    margin:2%;
+    color: #09d;
+    text-shadow:
+      -1px -1px 0 #444,
+      1px -1px 0 #111,
+      -1px 1px 0 #111,
+      2px 1px 0 #444; 
+  }
+  
+  .text-primary{
+    color:#18d;
+    text-shadow: 
+      -1px 2px 0 #000, 
+      2px 1px 0 #000,
+      2px -1px 0 #000,
+      -1px 2px 0 #000
+  }
+  
+  .banner h1{
+    font-size:44px;
+    border-radius:6px;  
+  }
+  
+  .banner p{
+    font-size:12px;
+    text-shadow: none;
+    background: #222;
+    border-radius:6px;
+    margin:2%;
+    color:#fff;
+    padding:10px;
+  }
+  
+  .modal-title{
+    color:black;
+  }
+  
+  .modal-body{
+    color:black;
+  }
+  .modal {
+    vertical-align:center;
+  }
+  
+  .main-container{
+    margin:auto;
+    padding-top:20px;
+    padding-bottom:20px;
+    border-top:4px solid #151515;
+    border-bottom:4px solid #151515;
+    background-image:url("https://googledrive.com/host/0B4uAFl_t5LeDfm5GYXNBNlhIYjYtcVprM2sxSl9Ub3pUckhTcXN1UzZaSFJUd2R1QjV1Smc/imageDark.png");
+  
+  }
+  
+  .control-box{
+    font-size:18px;
+    margin-top:-40px;
+    margin-bottom:45px;
+    padding:15px;
+    border:5px solid #000;
+    border-radius:20px;
+    background-color:#222222;
+  }
+  
+  .btn{
+    color:black;
+    border:3px solid black;
+    margin:5px;
+  }
+  
+  .modal-dialog{
+    border:5px solid black;
+  }
+  
+  .vertical-center{
+      position: relative;
+      top: 50%;
+    transform: translate(0,50%);
+  }
+  
+  #hide-button{
+    margin-top:30px;
+    margin-bottom:120px;
+  }
+  
+  #footer {
+     font-size:10px;
+     position:fixed;
+     left:0px;
+     bottom:0px;
+     height:30px;
+     width:100%;
+     background:#111;
+  }
+  
+  #footer p{
+    transform:translate(0,50%);
+  }
+  
+  #myModal{
+    top:50%;
+    transform: translateY(-50%);
+  }
+  
+  #message{
+    font-size:32px;
+    margin:auto;
+    margin-top:40px;
+    margin-bottom:10px;
+  }
+  
+  #slider{
+    margin:25px;
+  }
+  #color-control-box p{
+    margin-bottom:20px;
+  }
+  #reset-color-button{
+    margin:5px;
+  }
+  
+  #time-message{
+    margin:auto;
+    margin-bottom:10px;
+  
+  }
+  
+  #mute-button{
+    width:130px;
+    margin-bottom:40px;
+  }
+  

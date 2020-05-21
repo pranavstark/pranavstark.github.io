@@ -1,0 +1,148 @@
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+        <!--Audio Elements-->
+    <!--A bug with google drive hosting related to some MIME types causes a 429 HTTP error(too many requests) so I just changed the extension of audio files to .txt which seems to work-->
+    <audio id="sound-work" preload="auto"
+        src="https://googledrive.com/host/0B4uAFl_t5LeDflo1VlByRTlxeTdhZFpSQW9PMWRuNEVGS0dmR2Ewdm5QZzRQNy1yVjVIT1E/spin.txt"></audio>
+    <audio id="sound-break" preload="auto"
+        src="https://googledrive.com/host/0B4uAFl_t5LeDflo1VlByRTlxeTdhZFpSQW9PMWRuNEVGS0dmR2Ewdm5QZzRQNy1yVjVIT1E/jump.txt"></audio>
+    <audio id="sound-pomodoro" preload="auto"
+        src="https://opengameart.org/sites/default/files/audio_preview/song17_0.mp3.ogg"></audio>
+    <audio id="sound-done" preload="auto"
+        src="https://googledrive.com/host/0B4uAFl_t5LeDflo1VlByRTlxeTdhZFpSQW9PMWRuNEVGS0dmR2Ewdm5QZzRQNy1yVjVIT1E/bit.txt"></audio>
+    <audio id="sound-cancel" preload="auto"
+        src="https://googledrive.com/host/0B4uAFl_t5LeDflo1VlByRTlxeTdhZFpSQW9PMWRuNEVGS0dmR2Ewdm5QZzRQNy1yVjVIT1E/death.txt"></audio>
+</head>
+
+<body>
+
+
+
+    <!-- Cancel Modal Dialog -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Stop Timer</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to quit now?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancel-timer" class="btn btn-default" data-dismiss="modal">Yes</button>
+                    <button type="button" id="resume-timer" class="btn btn-primary" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid text-center">
+
+        <!--Main Title & Subtitle-->
+        <div class="banner row">
+            <h1>PIXELDORO</h1>
+
+            <button id="hide-button" class="btn btn-default hidden-lg">Hide Controls</button>
+
+            <p class="hidden-md hidden-sm hidden-xs"> A Cellular Automata Inspired Pixelated Hour Glass Pomodoro Timer!
+            </p>
+        </div>
+
+        <!--Controls & Hourglass-->
+        <div class="main-container row">
+            <!--Time Controls-->
+            <div class="col-md-12 col-lg-3 col-lg-offset-1">
+
+
+                <div id="work-control-box" class="control-box">
+                    <div class="row">
+                        <p class="col-xs-6 col-lg-12">Work Time</p>
+                        <p class="col-xs-6 col-lg-12 text-primary" id="work-time"></p>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-lg-12">
+                            <button id="work-time-down" class="btn btn-lg time-control">-</button>
+                            <button id="work-time-up" class="btn btn-lg time-control">+</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="break-control-box" class="control-box">
+
+                    <div class="row">
+                        <p class="col-xs-6 col-lg-12">Break Time</p>
+                        <p class="col-xs-6 col-lg-12 text-primary" id="break-time"></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-lg-12">
+                            <button id="break-time-down" class="btn btn-lg time-control">-</button>
+                            <button id="break-time-up" class="btn btn-lg time-control">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-12 col-lg-3 col-lg-push-4">
+                <div id="pomodoro-control-box" class="control-box">
+                    <div class="row">
+                        <p class="col-xs-4 col-lg-12">Pomodoros</p>
+                        <div class="col-xs-2 col-lg-12">
+                            <p id="pomodoros" class="text-primary"></p>
+                        </div>
+                        <div class="col-xs-6 col-lg-12">
+                            <p id="pomodoros-complete"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-lg-12">
+                            <button id="pomodoro-down" class="btn btn-lg time-control">-</button>
+                            <button id="pomodoro-up" class="btn btn-lg time-control">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="color-control-box" class="control-box hidden-md hidden-sm hidden-xs">
+                    <p>Color</p>
+                    <div id="slider"></div>
+                    <button id="reset-color-button" class="btn btn-sm">Reset</button>
+
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-4 col-lg-pull-3 canvas-container">
+                <canvas id="canvas">Your browser does not support the canvas element</canvas>
+            </div>
+
+        </div>
+
+        <div id="">
+            <h3 id="message"></h3>
+            <p id="time-message">Elapsed Time <span id="elapsed-time" class="text-primary">00:00</span></p>
+            <button id="mute-button" class="btn btn-sm">Sound <i class="fa fa-2x fa-volume-up"></i></button>
+        </div>
+
+        <!--The Footer-->
+        <div id="footer">
+            <p><a href="http://www.jeffwakeman.com">Designed and built by Jeff Wakeman</a></p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
